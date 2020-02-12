@@ -1,0 +1,3425 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' data: blob: filesystem: ws: gap://ready file: cdvfile: https://ssl.gstatic.com *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src * gap://ready; child-src *;">
+
+    <link rel="stylesheet" href="framework7/css/framework7.material.css">
+    <link rel="stylesheet" href="framework7/css/framework7.material.colors.css">
+    <link rel="stylesheet" type="text/css" href="framework7/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="framework7/css/kitchen-sink.css">
+    <link rel="stylesheet" href="css/my-app.css">
+    <!--<link rel="stylesheet" href="css/welcomescreen.css">-->
+    <link rel="stylesheet" href="css/spectrum.css">
+
+    <script type="text/javascript" src="js/touch-emulator.js"></script>
+    <script type="text/javascript">
+
+    </script>
+    <script src="cordova.js"></script>
+    <script src="xdk/init-dev.js"></script>
+    <script type="application/javascript" src="lib/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="framework7/js/framework7.js"></script>
+
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
+    <script type="text/javascript" src="js/resize.js"></script>
+    <script type="text/javascript" src="js/canvas-to-blob.min.js"></script>
+    <script type="text/javascript" src="js/spectrum.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+  </head>
+
+  <body class="layout-white theme-indigo" onunload="goingAway();">      
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel panel-left panel-reveal">
+      <div class="view">
+        <div class="pages navbar-fixed">
+        <!-- menu esquerdo -->
+          <div data-page="panel-left" class="page panel-reveal">
+            <div class="navbar">
+              <div class="navbar-inner profile">
+                <a href="#editprofile" class="edit_profile panel-close">
+                  <div class="infoprofile">
+                  <div class="profile_foto"></div>
+                  <div class="profile_nome"></div>
+                  <div class="profile_detalhes"></div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="page-content menu-left">
+              <div>
+                <ul class="list">
+                    <li>
+                        <a href="#index" class="panel-close"><i class="icon fa fa-home fa-lg"></i>HOME</a>
+                    </li>
+                    <li class="menucomunicado">
+                        <a href="#comuncondominio" class="panel-close" onclick="comuncondominio();"><i class="icon fa fa-comment fa-lg color-blue"></i>COMUNICADOS</a>
+                    </li>
+                    <!--<li class="menuinterfone">
+                        <a href="#interfone" class="panel-close" onclick="interfone();"><i class="icon fa fa-volume-control-phone fa-lg color-green"></i>INTERFONE</a>
+                    </li>-->
+                    <li class="menutaps">
+                        <a href="#" class="panel-close" onclick="bannercont('20');"><i class="icon fa fa-usd fa-lg color-green"></i>CRÉDITO PESSOAL</a>
+                    </li>
+                    <li class="menualerta">
+                        <a href="#alertadechegada" class="panel-close" onclick="alertadechegada();"><i class="icon fa fa-car fa-lg color-amber"></i>AVISO DE CHEGADA</a>
+                    </li>
+                    <li class="menuespaco">
+                        <a href="#agendamentodeespaco" class="panel-close agendamentodeespaco" onclick="agendamentodeespaco();"><i class="icon fa fa-calendar fa-lg color-red"></i>AGENDAMENTOS</a>
+                    </li>
+                    <li class="menuboletos">
+                        <a href="#boletos" class="panel-close" onclick="boleto();"><i class="icon fa fa-file-text-o fa-lg color-lightgreen"></i>BOLETOS</a>
+                    </li>
+                    <!--<li class="menupagamentos">
+                        <a href="#pagamentos" class="panel-close" onclick="pagamentos();"><i class="icon fa fa-credit-card fa-lg color-lightgreen"></i>PAGAMENTO DE CONTAS</a>
+                    </li>-->
+                    <li class="menuocorrencia">
+                        <a href="#livroocorrencias" class="panel-close" onclick="livroocorrencias();"><i class="icon fa fa-leanpub fa-lg color-gray"></i>LIVRO DE OCORRÊNCIAS</a>
+                    </li>
+                    <li class="menucadastros">
+                        <a href="#cadastros" class="panel-close"><i class="icon fa fa-male fa-lg color-brown"></i>CADASTROS</a>
+                    </li>
+                    <li class="menugetninjas">
+                        <a href="#getninjas" class="panel-close" onclick="getninjas();"><i class="icon fa fa-handshake-o fa-lg color-pink"></i>CONTRATAÇÃO DE SEVIÇOS</a>
+                    </li>
+                    <li class="menuenquetes">
+                        <a href="#enquetes" class="panel-close" onclick="enquetes();"><i class="icon fa fa-check-square-o fa-lg color-deeporange"></i>ENQUETES</a>
+                    </li>
+                    <li class="menutransparencia">
+                        <a href="#transparenciadecontastipo" onclick="transparenciadecontastipo();" class="panel-close"><i class="icon fa fa-calculator fa-lg color-orange"></i>DOCUMENTOS</a>
+                    </li>
+                    <li class="menuanuncios">
+                        <a href="#muraldeanuncios" class="panel-close" onclick="muraldeanuncios();"><i class="icon fa fa-shopping-cart fa-lg color-teal"></i>MURAL DE ANÚNCIOS</a>
+                    </li>
+                    <li class="menubanner">
+                        <a href="#banner" class="panel-close" onclick="banner();"><i class="icon fa fa-tags fa-lg color-purple"></i>CLUBE DE COMPRAS</a>
+                    </li>
+                    <li class="menucamera">
+                        <a href="#camerasdeseguranca" class="panel-close" onclick="camerasdeseguranca();"><i class="icon fa fa-video-camera fa-lg color-bluegray"></i>CÂMERAS DE SEGURANÇA</a>
+                    </li>
+                    <li class="menuservico">
+                        <a href="#servico" class="panel-close" onclick="servico();"><i class="icon fa fa-phone fa-lg color-deeppurple"></i>SERVIÇOS TERCEIRIZADOS</a>
+                    </li>
+                    <li class="menucronograma">
+                        <a href="#cronograma" class="panel-close" onclick="cronograma();"><i class="icon fa fa-users fa-lg color-green"></i>EQUIPE DO CONDOMÍNIO</a>
+                    </li>
+                    <!--<li>
+                        <a href="#videos" class="panel-close" onclick="videos();"><i class="icon fa fa-question-circle fa-lg color-deeporange"></i>AJUDA</a>
+                    </li>-->
+                    <li>
+                        <a href="#" class="panel-close sair" onclick="sair();"><i class="icon fa fa-sign-out fa-lg color-black"></i>SAIR DO APP</a>
+                    </li>
+                    <div class="version color-indigo"></div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="views">
+      <div class="view view-main">
+
+
+        <div class="pages navbar-fixed navbar-through">
+        <!-- menu index -->
+          <div data-page="index" class="page">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                <div class="center nameHome"></div>
+                <div class="right iconRight"><!--<a href="#videos" class="help link icon-only" onclick="videos();"><i class="icon fa fa-question-circle"></i></a>--></div>
+              </div>
+            </div>
+
+            <div class="page-content pageindex">
+              <!--<div id="push"></div>-->
+              <div id="menuhome" class="menuhome list-block nomargin font13">
+                <ul>
+                    <li class="menucomunicado">
+                        <a href="#comuncondominio" onclick="comuncondominio();" class="item-link"><i class="icon fa fa-comment fa-3x badgecomunicado color-blue"></i><br>COMUNICADOS<br><small class="labelmoradorcomunlegend">condomínio | portaria | morador</small></a>
+                    </li>
+                    <!--<li class="menuinterfone">
+                        <a href="#interfone" onclick="interfone();" class="item-link"><i class="icon fa fa-volume-control-phone fa-3x  color-green"></i><br>INTERFONE DO<br>CONDOMÍNIO</a>
+                    </li>-->
+                    <li class="menutaps">
+                        <a href="#" class="item-link" onclick="bannercont('20');"><i class="icon fa fa-usd fa-3x color-green"></i><br>CRÉDITO PESSOAL<br><small>em apenas 2 passos</small></a>
+                    </li>
+                    <li class="menualerta">
+                        <a href="#alertadechegada" class="item-link" onclick="alertadechegada();"><i class="icon fa fa-car fa-3x color-amber"></i><br>AVISO<br>DE CHEGADA</a>
+                    </li>
+                    <li class="menuespaco">
+                        <a href="#agendamentodeespaco" class="item-link agendamentodeespaco" onclick="agendamentodeespaco();"><i class="icon fa fa-calendar fa-3x badgeespaco color-red"></i><br>AGENDAMENTOS<br>DO CONDOMÍNIO</a>
+                    </li>
+                    <li class="menuboletos">
+                        <a href="#boletos" onclick="boleto();" class="item-link"><i class="icon fa fa-file-text-o fa-3x color-lightgreen"></i><br>BOLETOS<br>DO CONDOMÍNIO</a>
+                    </li>
+                    <!--<li class="menupagamentos">
+                        <a href="#pagamentos" onclick="pagamentos();" class="item-link"><i class="icon fa fa-credit-card fa-3x color-lightgreen"></i><br>PAGAMENTO<br>DE CONTAS</a>
+                    </li>-->
+                    <li class="menuocorrencia">
+                        <a href="#livroocorrencias" class="item-link" onclick="livroocorrencias();"><i class="icon fa fa-leanpub fa-3x badgeocorrencia color-gray"></i><br>LIVRO DE<br>OCORRÊNCIAS</a>
+                    </li>
+                    <li class="menucadastros">
+                        <a href="#cadastros" class="item-link"><i class="icon fa fa-male fa-3x color-brown"></i><br>CADASTROS<br>DO CONDOMÍNIO</a>
+                    </li>
+                    <li class="menugetninjas">
+                        <a href="#getninjas" class="item-link" onclick="getninjas();"><i class="icon fa fa-handshake-o fa-3x color-pink"></i><br>CONTRATAÇÃO <br>DE SERVIÇOS<br><small> GetNinjas</small></a>
+                    </li>
+                    <li class="menuenquetes">
+                        <a href="#enquetes" class="item-link" onclick="enquetes();"><i class="icon fa fa-check-square-o fa-3x color-deeporange"></i><br>ENQUETES<br>DO CONDOMÍNIO</a>
+                    </li>
+                    <li class="menutransparencia">
+                        <a href="#transparenciadecontastipo" class="item-link" onclick="transparenciadecontastipo();"><i class="icon fa fa-calculator fa-3x badgetransparencia color-orange"></i><br>DOCUMENTOS<br>DO CONDOMÍNIO</a>
+                    </li>
+                    <li class="menuanuncios">
+                        <a href="#muraldeanuncios" onclick="muraldeanuncios();" class="item-link" ><i class="icon fa fa-shopping-cart fa-3x color-teal"></i><br>MURAL<br>DE ANÚNCIOS</a>
+                    </li>
+                    <li class="menubanner">
+                        <a href="#banner" class="item-link" onclick="banner();"><i class="icon fa fa-tags fa-3x color-purple"></i><br>CLUBE DE<br>COMPRAS</a>
+                    </li>
+                    <li class="menucamera">
+                        <a href="#camerasdeseguranca" class="item-link" onclick="camerasdeseguranca();"><i class="icon fa fa-video-camera fa-3x color-bluegray"></i><br>CÂMERAS DE<br>SEGURANÇA</a>
+                    </li>
+                    <li class="menuservico">
+                        <a href="#servico" class="item-link" onclick="servico();"><i class="icon fa fa-phone fa-3x color-deeppurple"></i><br>SERVIÇOS<br>TERCEIRIZADOS</a>
+                    </li>
+                    <li class="menucronograma">
+                        <a href="#cronograma" class="item-link" onclick="cronograma();"><i class="icon fa fa-users fa-3x color-green"></i><br>EQUIPE DO<br>CONDOMÍNIO</a>
+                    </li>
+                    <!--<li class="menusair">
+                        <a href="#" class="sair" onclick="sair();"><i class="icon fa fa-sign-out fa-3x"></i><br>SAIR DO<br>APP</a>
+                    </li>-->
+                  </ul>
+              </div>
+            </div>
+
+            <!-- getninjas -->
+            <div data-page="getninjas" class="page cached">
+
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                    <div class="center">CONTRATAÇÃO DE SERVIÇOS</div>
+                    <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                    <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+                </div>
+              </div>
+
+
+              <div class="page-content">
+                <div class="content-block boletos-100">  
+                  <iframe src="" class="iframe-boleto" target="_self"></iframe>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- boleto conteudo -->
+            <div data-page="boletos" class="page cached">
+
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                    <div class="center">BOLETOS</div>
+                    <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                    <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+                </div>
+              </div>
+
+
+              <div class="page-content">
+                <div class="content-block boletos-100">  
+                  <iframe src="" class="iframe-boleto" target="_self"></iframe>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- pagamentos -->
+            <div data-page="pagamentos" class="page cached">
+
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                    <div class="center">PAGAMENTOS</div>
+                    <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                    <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+                </div>
+              </div>
+     
+              <div class="page-content pagamentos pull-to-refresh-content">
+                <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+                </div>
+                <div class="content-block">
+                  <div class="list-block nomargin tablet">
+                      <div class="row item-content">
+                          <!-- Each "cell" has col-[widht in percents] class -->
+                          <div class="col-50">
+                              <div class="legendaespaco bg-amber"></div><div class="legendaespacotext">Em aberto</div>
+                          </div>
+                          <div class="col-50">
+                              <div class="legendaespaco bg-green"></div><div class="legendaespacotext">Pago</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="list-block media-list tablet">
+                      <ul id="pagamentos-cont"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- pagamentos conteudo -->
+            <div data-page="pagamentoscont" class="page cached">
+
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                    <div class="center">PAGAMENTOS</div>
+                    <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                    <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+                </div>
+              </div>
+
+
+              <div class="page-content">
+                <div class="content-block">  
+                  <div class="list-block tablet">
+                    <div class="card-wrapper"></div>
+                    <form action="" id="formCard">
+                      <ul>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-inner">
+                            <div class="item-title label">Número do cartão</div>
+                              <div class="item-input">
+                                <input onKeyUp="tabenter(event,getElementById('name-card'))" placeholder="Digite o número do cartão" type="tel" name="number-card" id="number-card">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-inner">
+                            <div class="item-title label">Nome completo</div>
+                              <div class="item-input">
+                                <input onKeyUp="tabenter(event,getElementById('expiry-card'))" placeholder="Digite o nome igual ao do cartão" type="text" name="name-card" id="name-card">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content col-card row">
+                            <div class="col-50">
+                              <div class="item-title label">Data de validade</div>
+                              <div class="item-input">
+                                <input onKeyUp="tabenter(event,getElementById('cvc-card'))" placeholder="mm/aa" type="tel" name="expiry-card" id="expiry-card">
+                              </div>
+                            </div>
+                            <div class="col-50">
+                              <div class="item-title label">Código de segurança</div>
+                              <div class="item-input">
+                                <input onKeyUp="tabenter(event,getElementById('installments'))" placeholder="cvc" type="number" name="cvc-card" id="cvc-card">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="installmentsli">
+                          <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title label">Pague em até <span class="qtdInstallments"></span>x</div>
+                              <div class="item-input">
+                                <select id="installments"></select>
+                                <input type="hidden" id="idpagamentos" value="">
+                                <input type="hidden" id="txtvalorpagamentos" value="">
+                                <input type="hidden" id="cardToken" value="">
+                                <input type="hidden" id="brand-card" value="">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </form>
+                    <p class="buttons-row">
+                      <a href="#" id="butinserirpagamentos" class="button button-big button-fill button-raised color-green button-full-margin">EFETUAR PAGAMENTO</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- home da portaria -->
+            <div class="pageportaria invisivel">
+              <div class="pageportariahome">
+                <div class="subnavbar toolbar tabbar submenuhome">
+                  <div class="buttons-row">
+                    <a href="#" class="tab-link active"><i class="icon fa badgecomunportariahome"></i>Comunicados</a>
+                  </div>
+                </div>
+                <a href="#inserircomunportaria" id="inserircomunportaria" class="inserircomunportaria floating-button bg-green">
+                  <i class="icon icon-plus"></i>
+                </a>
+
+                <div class="page-content comunportariahome">
+                  <div class="pull-to-refresh-layer">
+                    <div class="preloader"></div>
+                    <div class="pull-to-refresh-arrow"></div>
+                  </div>
+                  <div class="list-block media-list">
+                    <ul id="comunportariahome-cont"></ul>
+                  </div>
+                  <!-- Preloader -->
+                  <div class="infinite-scroll-preloader">
+                    <div class="preloader"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pageportariahome">
+                <div class="pageportariahomecentro avisodechegadaportaria">
+                  <div class="subnavbar toolbar tabbar submenuhome">
+                    <div class="buttons-row">
+                      <a href="" class="button tab-link active">Avisos de chegada</a>
+                    </div>
+                  </div>
+                  
+                  <div class="page-content alertadechegadahome pull-to-refresh-content">
+                    <div class="pull-to-refresh-layer">
+                      <div class="preloader"></div>
+                      <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    <div class="list-block media-list">
+                      <ul id="alertadechegadahome-cont"></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="pageportariahomecentro alertaportariaportaria">
+                  <div class="subnavbar toolbar tabbar submenuhome submenuhomealertavisitantes">
+                    <div class="buttons-row">
+                      <a href="" class="button tab-link active">Alertas portaria</a>
+                    </div>
+                  </div>
+                  <a href="#inseriralertaportaria" id="inseriralertaportaria" class="inseriralertaportaria floating-button bg-green">
+                    <i class="icon icon-plus"></i>
+                  </a>
+
+                  <div class="page-content alertavisitanteshome pull-to-refresh-content">
+                    <div class="pull-to-refresh-layer">
+                      <div class="preloader"></div>
+                      <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    <div class="list-block media-list">
+                      <ul id="alertavisitanteshome-cont"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pageportariahome">
+                <form data-search-list=".search-here" data-search-in=".item-title" class="searchbar searchbar-init toolbar tabbar submenuhome">
+                  <div class="searchbar-input">
+                    <input type="search" class="inputsearchportariahome" placeholder="Nome, placa, apto ou bloco">
+                    <a href="#" class="searchbar-clear"></a>
+                  </div>
+                </form>
+                <a href="#inserirvisitante" id="inserirvisitante" class="inserirvisitantehome floating-button bg-green">
+                  <i class="icon icon-plus"></i>
+                </a>
+                <!-- Search Bar overlay 
+                <div class="searchbar-overlay"></div>-->
+               
+                <div class="page-content" style="padding-top: 56px;">
+                  <div class="list-block searchbar-not-found">
+                    <ul>
+                      <li class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Nenhum resultado</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+               
+                  <div class="list-block media-list list-block-search searchbar-found">
+                    <ul id="searchportariahome-cont"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- edit profile -->
+          <div data-page="editprofile" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">EDITAR USUÁRIO</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserirprofile">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Foto</div>
+                            <div class="item-input optionCameraProfile">
+                              <div id="imagem-profile" class="optionCameraProfile"></div>
+                                <!--<input type="file" id="fileMorador">-->
+                                <div class="img-preview">
+                                  <img src="" id="preview-profile" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Nome</div>
+                            <div class="item-input">
+                              <input type="text" onKeyUp="tabenter(event,getElementById('profilecpf'))" placeholder="Informe seu nome" id="profilenome" value="" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="labelcnpj">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">CNPJ</div>
+                            <div class="item-input">
+                              <input type="text" class="cnpj" onKeyUp="tabenter(event,getElementById('profilebirthdate'))" placeholder="Informe seu CNPJ" id="profilecnpj" value="" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="labelcpf">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">CPF</div>
+                            <div class="item-input">
+                              <input type="text" class="cpf" onKeyUp="tabenter(event,getElementById('profilebirthdate'))" placeholder="Informe seu CPF" id="profilecpf" value="" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="labeldatanascimento">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Data de Nasc.</div>
+                            <div class="item-input">
+                              <input type="date" onKeyUp="tabenter(event,getElementById('profilephonenumber'))" placeholder="dd/mm/aaaa" id="profilebirthdate" value="" onchange="this.className=(this.value!=''?'has-value':'')">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Fone</div>
+                            <div class="item-input">
+                              <input type="tel" class="phone" onKeyUp="tabenter(event,getElementById('profilecellphone'))" placeholder="Informe seu telefone" id="profilephonenumber" value="">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Celular</div>
+                            <div class="item-input">
+                              <input type="tel" class="phone" placeholder="Informe seu celular" onKeyUp="tabenter(event,getElementById('profilegender'))" id="profilecellphone" value="">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                        <!-- Select -->
+                        <li class="labelsexo">
+                          <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title label">Sexo</div>
+                              <div class="item-input">
+                                <select id="profilegender" onKeyUp="tabenter(event,getElementById('profilepassword'))">
+                                  <option value=""  selected="selected">Selecione</option>
+                                  <option value="M" >Masculino</option>
+                                  <option value="F" >Feminino</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Senha</div>
+                            <div class="item-input">
+                              <input type="password" placeholder="Informe sua senha" onKeyUp="tabenter(event,getElementById('buteditprofile'))" id="profilepassword" value="">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      </ul>  
+                  </form>
+                  <p class="buttons-row">
+                    <a href="#" id="buteditprofile" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                  </p>
+                </div>            
+              </div>
+            </div>
+          </div>
+
+
+          <!-- videos help -->
+          <div data-page="videos" class="page cached">
+              <div class="navbar">
+                <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">AJUDA</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+                </div>
+              </div>
+
+              <form data-search-list=".search-here" data-search-in=".item-title" class="searchbar searchbar-init toolbar tabbar submenuvideos">
+                <div class="searchbar-input">
+                  <input type="search" class="inputsearchvideos" placeholder="Pesquisar">
+                  <a href="#" class="searchbar-clear"></a>
+                </div>
+              </form>
+              <div class="page-content videos pull-to-refresh-content">
+                <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+                </div>
+                <div class="list-block searchbar-not-found">
+                  <ul>
+                    <li class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Nenhum resultado</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                    <div class="list-block media-list list-block-search-videos searchbar-found">
+                      <ul id="videos-cont"></ul>
+                    </div>
+              </div>
+          </div>
+
+          <!-- exibe videos -->
+          <div data-page="exibevideos" class="page exibevideos no-navbar no-toolbar cached">
+              <!-- Floatin Action Button -->
+              <a href="#videos" onClick="closevideo();" class="link floating-top color-white bg-red">
+                <i class="fa fa-times"></i>
+              </a>
+              <div class="page-content video-full" style="padding: 0px!important;">
+                  <iframe src="" id="exibevideos-cont" width="585px" height="300px" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+              </div>
+          </div>
+
+          <!-- inserir alerta portaria -->
+          <div data-page="inseriralertaportaria" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR ALERTA</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                <form method="post" action="#" role="form" id="forminseriralertaportaria">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitalertaportaria" onKeyUp="tabenter(event,getElementById('txtalertaportaria'))" placeholder="Informe um título" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtalertaportaria" class="resizable" placeholder="Informe uma descrição" required></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+
+                    </ul>
+                  </form>
+                  <p class="buttons-row">
+                    <a href="#" id="butinseriralertaportaria" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- alerta portaria home conteudo -->
+          <div data-page="alertaportariahomecont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">ALERTA PORTARIA</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="alertaportariahome-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- alerta de chegada -->
+          <div data-page="alertadechegada" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">AVISO DE CHEGADA</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block media-list tablet">
+                    <div id="total" class="totaldistancia bg-blue"></div>
+                    <div id="map-canvas" class="maps-size"></div>
+
+                    <div class="buttonsalerta">
+                        <p class="buttons-row">
+                          <a href="#" class="button button-big buttonalertadechegada button-fill button-raised color-green button-full-margin" style="margin-bottom:0!important">ENVIAR AVISO</a>
+                        </p>
+                        <p class="buttons-row">
+                          <a href="#" class="button button-big buttonpanico button-fill button-raised color-red button-full-margin" style="margin-bottom:0!important">PÂNICO</a>
+                        </p>
+                        <!--<p class="buttons-row buttonshare">
+                          <a href="#" onclick="shareAlerta()" class="button button-big button-fill button-raised color-indigo button-full-margin">COMPARTILHAR AVISO</a>
+                        </p>-->
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- alerta de chegada cont-->
+          <div data-page="alertadechegadacont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">AVISO DE CHEGADA</div>
+                  <div class="right"><a href="index.html" class="link external icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="index.html" class="link external icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block media-list tablet">
+                    <div id="totalalerta-cont" class="totaldistancia bg-blue"></div>
+                    <!--<div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-stop-circle color-red"></i></a></div>-->
+                    <div id="map-canvas-cont" class="maps-size"></div>
+
+                    <div class="buttonsalerta">
+                        <p class="buttons-row">
+                          <a href="#" class="button button-big buttonconcluiralerta button-fill button-raised color-red button-full-margin" style="margin-bottom:0!important">CONCLUIR ALERTA</a>
+                        </p>
+                    </div>
+                    <div class="">
+                      <ul id="alertadechegadacont-cont"></ul>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- agendamento espaço -->
+          <div data-page="agendamentodeespaco" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">AGENDAMENTOS DO CONDOMÍNIO</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="#inseriragendamentodeespaco" class="floating-button inseriragendamentodeespaco bg-green">
+            <i class="icon icon-plus"></i>
+          </a>          
+            <div class="page-content">
+                <div class="content-block nomargin">
+                    <div class="list-block nomargin tablet">
+                        <ul>
+                            <!-- Smart select item -->
+                            <li>
+                              <!-- Additional "smart-select" class -->
+                              <a href="#" class="item-link actionOptionAgendamento">
+                                <div class="item-content">
+                                  <div class="item-inner">
+                                    <!-- Select label -->
+                                    <div class="item-title">Selecione uma opção:</div>
+                                    <!-- Selected value, not required -->
+                                    <div class="item-after selecionarespaco"></div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="calendar-inline-container"></div>
+                </div>
+
+                <div class="list-block nomargin tablet">
+                  <div class="row item-content label-agendamento">Legenda calendário</div>
+                    <div class="row item-content label-icon-agendamento-first">
+                        <!-- Each "cell" has col-[widht in percents] class -->
+                        <div class="col-50">
+                            <div class="legendaespaco bg-indigo"></div><div class="legendaespacotext">Data selecionada</div>
+                        </div>
+                        <div class="col-50">
+                            <div class="legendaespaco bg-red"></div><div class="legendaespacotext">Com reserva</div>
+                        </div>
+                    </div>
+                    <div class="row item-content label-agendamento" style="margin-top: 10px;">Legenda agendamentos</div>
+                    <div class="row item-content label-icon-agendamento">
+                        <!-- Each "cell" has col-[widht in percents] class -->
+                        <div class="col-50">
+                            <div class="legendaespaco bg-amber"></div><div class="legendaespacotext">Agendado</div>
+                        </div>
+                        <div class="col-50">
+                            <div class="legendaespaco bg-green"></div><div class="legendaespacotext">Confirmado</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-block media-list tablet">
+                    <ul id="espaco-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- espaco conteudo -->
+          <div data-page="espacocont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">AGENDAMENTO DO CONDOMÍNIO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block-cont media-list tablet">
+                  <ul id="espacocont-cont"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inserir agendamento espaço -->
+          <div data-page="inseriragendamentodeespaco" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR AGENDAMENTO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminseriragendamentodeespaco">
+                   <ul>
+                    <li>
+                      <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">Espaço</div>
+                            <div class="item-after selecionarespaco espacoinserir"></div>
+                        </div>
+                      </div>  
+                    </li>
+
+                      <li class="blocolistagendamentoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelbloco">Bloco</div>
+                            <div class="item-input">
+                              <select id="blocolistagendamento" onchange="listDomicilioAgendamento();" class="blocolistagendamento" required></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="domiciliolistagendamentoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelapto">Apto</div>
+                            <div class="item-input">
+                              <select id="domiciliolistagendamento" onChange="listMoradoresAgendamento();" class="domiciliolistagendamento"></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="moradorlistagendamentoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label labelmorador">Morador</div>
+                              <div class="item-input">
+                                <select id="moradorlistagendamento" class="moradorlistagendamento"></select>
+                              </div>
+                            </div>
+                          </div>
+                      </li>
+
+                    <li>
+                      <div class="item-content">
+                        <div class="item-inner">
+                        <div class="item-title label">Data</div>
+                          <div class="item-input">
+                            <input type="text" placeholder="Informe uma data" readonly id="dataagendamento">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="agenhorainiperi">
+                      <div class="item-content">
+                        <div class="item-inner">
+                        <div class="item-title label">Período</div>
+                          <div class="item-input">
+                            <!--<input type="hidden" value="" id="horainicoagendamento">
+                            <input type="hidden" value="" id="horaterminoagendamento">-->
+                            <select id="turnoinicoagendamento">
+                              <option value="" selected="selected">Selecione um período</option>
+                              <option value="08:00">Manhã</option>
+                              <option value="14:00">Tarde</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="agenhoraini">
+                      <div class="item-content">
+                        <div class="item-inner">
+                        <div class="item-title label">Hora início</div>
+                          <div class="item-input">
+                            <!--<input type="time" value="00:00" step="3600" id="horainicoagendamento">-->
+                            <select id="horainicoagendamento">
+                              <option value="00:00" selected="selected">00:00</option>
+                              <option value="01:00">01:00</option>
+                              <option value="02:00">02:00</option>
+                              <option value="03:00">03:00</option>
+                              <option value="04:00">04:00</option>
+                              <option value="05:00">05:00</option>
+                              <option value="06:00">06:00</option>
+                              <option value="07:00">07:00</option>
+                              <option value="08:00">08:00</option>
+                              <option value="09:00">09:00</option>
+                              <option value="10:00">10:00</option>
+                              <option value="11:00">11:00</option>
+                              <option value="12:00">12:00</option>
+                              <option value="13:00">13:00</option>
+                              <option value="14:00">14:00</option>
+                              <option value="15:00">15:00</option>
+                              <option value="16:00">16:00</option>
+                              <option value="17:00">17:00</option>
+                              <option value="18:00">18:00</option>
+                              <option value="19:00">19:00</option>
+                              <option value="20:00">20:00</option>
+                              <option value="21:00">21:00</option>
+                              <option value="22:00">22:00</option>
+                              <option value="23:00">23:00</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="agenhorater">
+                      <div class="item-content">
+                        <div class="item-inner">
+                        <div class="item-title label">Hora término</div>
+                          <div class="item-input">
+                            <!--<input type="time" value="00:00" step="3600" id="horaterminoagendamento">-->
+                            <select id="horaterminoagendamento">
+                              <option value="00:00" selected="selected">00:00</option>
+                              <option value="01:00">01:00</option>
+                              <option value="02:00">02:00</option>
+                              <option value="03:00">03:00</option>
+                              <option value="04:00">04:00</option>
+                              <option value="05:00">05:00</option>
+                              <option value="06:00">06:00</option>
+                              <option value="07:00">07:00</option>
+                              <option value="08:00">08:00</option>
+                              <option value="09:00">09:00</option>
+                              <option value="10:00">10:00</option>
+                              <option value="11:00">11:00</option>
+                              <option value="12:00">12:00</option>
+                              <option value="13:00">13:00</option>
+                              <option value="14:00">14:00</option>
+                              <option value="15:00">15:00</option>
+                              <option value="16:00">16:00</option>
+                              <option value="17:00">17:00</option>
+                              <option value="18:00">18:00</option>
+                              <option value="19:00">19:00</option>
+                              <option value="20:00">20:00</option>
+                              <option value="21:00">21:00</option>
+                              <option value="22:00">22:00</option>
+                              <option value="23:00">23:00</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="align-top">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title label">Observação</div>
+                            <div class="item-input">
+                                <textarea id="txtdescricaoagendamento" class="resizable" placeholder="Informe uma descrição"></textarea>
+                            </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="align-top">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title label">Valor</div>
+                          <div class="content-block no-margin">
+                            <div class="content-block-inner" id="valorTaxa"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="align-top descricaoTaxa">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title label">Termos de uso</div>
+                          <div class="content-block">
+                            <div class="content-block-inner" id="descricaoTaxa"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>       
+                   </ul>
+                  </form>
+                    <p class="buttons-row">
+                      <a href="#" id="butinseriragendamento" class="button button-big button-fill button-raised color-indigo button-full-margin">AGENDAR</a>
+                    </p>
+                </div>                  
+            </div>
+          </div>
+
+          <!-- cadastros -->
+          <div data-page="cadastros" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">CADASTROS</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content cadastros">
+              <div class="content-block">
+                <div class="row">
+                  <div class="col-100 list-cadastros menucadastrosmorador">
+                    <a href="#morador" onclick="morador();" class="item-link item-cadastros labelmoradoricon"><i class="icon fa fa-users fa-3x"></i><br>CADASTRO DE<br>MORADORES</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-100 list-cadastros menecadastrosvisitante">
+                    <a href="#visitante" onclick="visitante();" class="item-link item-cadastros"><i class="icon fa fa-user fa-3x"></i><br>CADASTRO DE<br>VISITANTES</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-100 list-cadastros menucadastrosveiculo">
+                    <a href="#veiculo" onclick="veiculo();" class="item-link item-cadastros"><i class="icon fa fa-car fa-3x"></i><br>CADASTRO DE<br>VEÍCULOS</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- mural de anuncios -->
+          <div data-page="muraldeanuncios" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">MURAL DE ANÚNCIOS</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="#inserirmuraldeanuncios" class="inserirmuraldeanuncios floating-button bg-green">
+            <i class="icon icon-plus"></i>
+          </a>          
+            <div class="page-content muraldeanuncios pull-to-refresh-content">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
+              <div class="content-block">
+                <div class="list-block nomargin tablet">
+                    <ul>
+                        <!-- Smart select item -->
+                        <li>
+                          <!-- Additional "smart-select" class -->
+                          <a href="#" class="item-link actionOptionCatAnun">
+                            <div class="item-content">
+                              <div class="item-inner">
+                                <!-- Select label -->
+                                <div class="item-title">Selecionar categoria:</div>
+                                <!-- Selected value, not required -->
+                                <div class="item-after selecionarcatanuncio"></div>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-block media-list tablet">
+                  <ul id="muraldeanuncios-cont">
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- mural de anuncios conteudo -->
+          <div data-page="muraldeanuncioscont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">MURAL DE ANÚNCIOS</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="" class="floating-button whatsapp bg-green">
+            <i class="fa fa-whatsapp fa-2x"></i>
+          </a>
+          <a href="" class="floating-button tel-anuncio bg-green">
+            <i class="fa fa-phone fa-2x"></i>
+          </a>
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block-cont media-list tablet">
+                  <ul id="muraldeanuncioscont-cont">
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inserir mural de anuncios -->
+          <div data-page="inserirmuraldeanuncios" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR ANÚNCIO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                <form method="post" action="#" role="form" id="forminserirmuraldeanuncios">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Categoria</div>
+                            <div class="item-input">
+                              <select id="txtcatanuncio" onKeyUp="tabenter(event,getElementById('txttitanuncio'))" required>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitanuncio" onKeyUp="tabenter(event,getElementById('txtanuncio'))" placeholder="Informe um título">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtanuncio" class="resizable" placeholder="Informe uma descrição"></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Valor R$</div>
+                            <div class="item-input">
+                            <input type="text" class="money" id="txtvaloranuncio" onKeyUp="tabenter(event,getElementById('txtphonenumberanuncio'))" placeholder="Informe um valor">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Fone</div>
+                            <div class="item-input">
+                            <input type="text" class="phone" id="txtphonenumberanuncio" onKeyUp="tabenter(event,getElementById('txtwhatsappanuncio'))" value="" placeholder="Informe um telefone">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <!--<li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Whatsapp</div>
+                            <div class="item-input">
+                              <label class="label-switch">
+                                <input type="checkbox" id="txtwhatsappanuncio" onKeyUp="tabenter(event,getElementById('preview-anuncios'))" value="1">
+                                <div class="checkbox"></div>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </li>-->
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-anuncios" class="optionCameraanuncios custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-anuncios" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinseriranuncios" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        <!-- banner -->
+        <div data-page="banner" class="page cached">
+
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                <div class="center">CLUBE DE COMPRAS</div>
+                <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+            </div>
+          </div>
+
+          <form data-search-list=".search-here" data-search-in=".titBanner" class="searchbar searchbar-init toolbar tabbar submenubanner">
+            <div class="searchbar-input">
+              <input type="search" class="inputsearchbanner" placeholder="Pesquisar">
+              <a href="#" class="searchbar-clear"></a>
+            </div>
+          </form>
+            <!-- Floatin Action Button -->
+            <a href="#inserirbanner" class="inserirbanner floating-button bg-green">
+                <i class="icon icon-plus"></i>
+            </a>          
+            <div class="page-content banner pull-to-refresh-content">
+                <div class="pull-to-refresh-layer">
+                    <div class="preloader"></div>
+                    <div class="pull-to-refresh-arrow"></div>
+                </div>
+                <div class="list-block media-list tablet list-block-search-banner searchbar-found">
+                  <ul id="banner-cont" class="banner-cont"></ul>
+                </div>
+                <!--<div class="content-block">
+                    <div class="row" id="banner-cont" class="banner-cont"></div>
+                </div>-->
+            </div>
+        </div>
+
+          <!-- inserir banner -->
+          <div data-page="inserirbanner" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR BANNER</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                <form method="post" action="#" role="form" id="forminserirbanner">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitbanner" onKeyUp="tabenter(event,getElementById('txtlinkbanner'))" placeholder="Informe um título">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Link</div>
+                            <div class="item-input">
+                            <input type="text" id="txtlinkbanner" placeholder="Informe o endereço do link">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-banner" class="optionCameraBanner custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-banner" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserirbanner" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>
+                </div>                
+              </div>
+            </div>
+          </div>
+
+          <!-- ocorrencias -->
+          <div data-page="livroocorrencias" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">LIVRO DE OCORRÊNCIAS</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="#inserirocorrencias" onclick="inserirocorrencias();" class="floating-button inserirocorrencias bg-green">
+            <i class="icon icon-plus"></i>
+          </a>          
+            <div class="page-content livroocorrencias pull-to-refresh-content">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
+              <div class="content-block">
+                <div class="list-block media-list tablet">
+                  <ul id="ocorrencias-cont"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ocorrencias conteudo -->
+          <div data-page="livroocorrenciascont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">LIVRO DE OCORRÊNCIAS</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+
+            <div class="page-content">
+              <div class="list-block-cont media-list tablet">
+                <ul id="ocorrenciascont-cont"></ul>
+              </div>
+              <div class="list-block media-list tablet">
+                <ul id="ocorrenciasrespcont-cont"></ul>
+              </div>
+              <div class="resp-ocorrencias-cont tablet"></div>
+            </div>
+          </div>
+
+          <!-- inserir ocorrencias -->
+          <div data-page="inserirocorrencias" id="inserirocorrencias" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR OCORRÊNCIA</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                <form method="post" action="#" role="form" id="forminserirocorrencias">
+                    <ul>
+                      <!-- Select -->
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Tipo</div>
+                            <div class="item-input">
+                              <select id="idtipoocorrencia" onKeyUp="tabenter(event,getElementById('idlocalocorrencia'))" required></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <!-- Select -->
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Local</div>
+                            <div class="item-input">
+                              <select id="idlocalocorrencia" onKeyUp="tabenter(event,getElementById('txtocorrencia'))" required></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+                      <!-- Additional "align-top" class for correct textarea alignment -->
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtocorrencia" class="resizable" placeholder="Informe uma descrição" required></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-ocorrencias" class="optionCameraOcorrencias custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-ocorrencias" onKeyUp="tabenter(event,getElementById('butinserirocorrencias'))" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="arqPdf">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Arquivo PDF</div>
+                            <div class="item-input">
+                              <input type="file" id="pdfFileOcorrencias" value="" class="custom-pdf-input">
+                              <input type="hidden" id="pdfFileOcorrenciasHidden" value="">
+                              <div class="pdf-preview">
+                                <img src="" id="preview-pdf-ocorrencias" width="100" height="80">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserirocorrencias" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>
+                </div>               
+              </div>
+            </div>
+          </div>
+
+
+          <!-- cameras de segurança -->
+          <div data-page="camerasdeseguranca" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">CÂMERAS DE SEGURANÇA</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="content-block tablet">
+                  <div class="row no-gutter" id="camerasdeseguranca-cont"></div>
+                </div>
+            </div>
+          </div>
+
+          <!-- exibe cameras de segurança -->
+          <div data-page="exibecamerasdeseguranca" class="bg-black page no-navbar cached">
+            <!-- Floatin Action Button -->
+            <a href="#camerasdeseguranca" onClick="$('#exibecamerasdeseguranca-cont').attr('src','');" class="back floating-top white bg-red">
+              <i class="fa fa-times"></i>
+            </a>
+            <div class="page-content video-full">
+            <iframe src="" id="exibecamerasdeseguranca-cont" width="585px" height="300px" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- documentos tipo -->
+          <div data-page="transparenciadecontastipo" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">TIPOS DE DOCUMENTOS</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <!-- Floatin Action Button -->
+            <a href="#inserirtransparenciadecontas" id="inserirtransparenciadecontas" class="inserirtransparenciadecontas floating-button bg-green">
+              <i class="icon icon-plus"></i>
+            </a>  
+            <div class="page-content">
+
+              <div id="menuhome" class="menuhome docstipo list-block nomargin font13">
+                <ul>
+                    <li class="docsfinanceiros invisivel">
+                        <a href="#transparenciadecontas" onclick="transparenciadecontas('1');PageButtonClicked('Documentos Financeiros')" class="item-link"><i class="icon fa fa-bar-chart fa-3x color-indigo"></i><br>FINANCEIROS</a>
+                    </li>
+                    <li class="docsprojetos invisivel">
+                        <a href="#transparenciadecontas" onclick="transparenciadecontas('2');PageButtonClicked('Documentos Projetos')" class="item-link"><i class="icon fa fa-building-o fa-3x color-indigo"></i><br>PROJETOS</a>
+                    </li>
+                    <li class="docsinformativos invisivel">
+                        <a href="#transparenciadecontas" onclick="transparenciadecontas('3');PageButtonClicked('Documentos Informativos')" class="item-link"><i class="icon fa fa-leanpub fa-3x color-indigo"></i><br>INFORMATIVOS</a>
+                    </li>
+                    <li class="docseditais invisivel">
+                        <a href="#transparenciadecontas" onclick="transparenciadecontas('4');PageButtonClicked('Documentos Editais')" class="item-link"><i class="icon fa fa-users fa-3x color-indigo"></i><br>EDITAIS</a>
+                    </li>
+                    <li class="docsatas invisivel">
+                        <a href="#transparenciadecontas" onclick="transparenciadecontas('5');PageButtonClicked('Documentos Atas')" class="item-link"><i class="icon fa fa-pencil-square-o fa-3x color-indigo"></i><br>ATAS</a>
+                    </li>
+                    <li class="docsregulamentos invisivel">
+                        <a href="#transparenciadecontas" onclick="transparenciadecontas('6');PageButtonClicked('Documentos Regulamentos')" class="item-link"><i class="icon fa fa-files-o fa-3x color-indigo"></i><br>REGULAMENTOS</a>
+                    </li>
+                    <li class="docsdiversos invisivel">
+                        <a href="#transparenciadecontas" onclick="transparenciadecontas('7');PageButtonClicked('Documentos Diversos')" class="item-link"><i class="icon fa fa-file-text-o fa-3x color-indigo"></i><br>DIVERSOS</a>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- transparencia de contas -->
+          <div data-page="transparenciadecontas" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">DOCUMENTOS</div>
+                  <div class="right"><a href="#transparenciadecontastipo" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <!-- Floatin Action Button -->
+            <a href="#inserirtransparenciadecontas" id="inserirtransparenciadecontas" class="inserirtransparenciadecontas floating-button bg-green">
+              <i class="icon icon-plus"></i>
+            </a>          
+              <div class="page-content transparenciadecontas pull-to-refresh-content">
+                <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+                </div>
+                  <div class="list-block media-list tablet">
+                    <ul id="transparenciadecontas-cont"></ul>
+                  </div>
+              </div>
+          </div>
+
+          <!-- transparencia de contas conteudo -->
+          <div data-page="transparenciadecontascont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">DOCUMENTOS</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="transparenciadecontascont-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- inserir transparencia de contas -->
+          <div data-page="inserirtransparenciadecontas" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR DOCUMENTOS</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>   
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserirtransparenciadecontas" enctype="multipart/form-data">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Tipo</div>
+                            <div class="item-input">
+                              <select id="txtidtipotrans" name="txtidtipotrans" required>
+                                <option value="" selected="selected">Escolha um tipo</option>
+                                <option value="1">Financeiros</option>
+                                <option value="2">Projetos</option>
+                                <option value="3">Informativos</option>
+                                <option value="4">Editais</option>
+                                <option value="5">Atas</option>
+                                <option value="6">Regulamentos</option>
+                                <option value="7">Diversos</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>   
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                            <input type="text" id="txttittrans" onKeyUp="tabenter(event,getElementById('txtdescricaotrans'))" placeholder="Informe um título" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+                      <!-- Additional "align-top" class for correct textarea alignment -->
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtdescricaotrans" class="resizable" placeholder="Informe uma descrição" required></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-transparencia" class="optionCameraTransparencia custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-transparencia" onKeyUp="tabenter(event,getElementById('butinserirtransparencia'))" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="arqPdf">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Arquivo PDF</div>
+                            <div class="item-input">
+                              <input type="file" id="pdfFileTransparencia" value="" class="custom-pdf-input">
+                              <input type="hidden" id="pdfFileTransparenciaHidden" value="">
+                              <div class="pdf-preview">
+                                <img src="" id="preview-pdf-transparencia" width="100" height="80">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserirtransparencia" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>            
+                </div>                
+              </div>
+            </div>
+          </div>
+
+
+          <!-- enquetes -->
+          <div data-page="enquetes" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">ENQUETES</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <!-- Floatin Action Button -->
+            <a href="#inserirenquetes" id="inserirenquetes" class="inserirenquetes floating-button bg-green">
+              <i class="icon icon-plus"></i>
+            </a>          
+              <div class="page-content enquetes pull-to-refresh-content">
+                <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+                </div>
+                  <div class="list-block media-list tablet">
+                    <ul id="enquetes-cont"></ul>
+                  </div>
+              </div>
+          </div>
+
+          <!-- enquetes conteudo -->
+          <div data-page="enquetescont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">RESPOSTAS ENQUETE</div>
+                  <div class="right"><a href="#enquetes" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="enquetescont-cont"></ul>
+                  <ul id="enquetescontbut-cont">
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserirrespenquetes" class="button button-big button-fill button-raised color-green">ENVIAR RESPOSTA</a>
+                            </p>
+                            <p class="buttons-row">
+                              <a href="#enquetesresultado" onclick="" id="butverresultadoenquetes" class="button button-big button-fill button-raised color-orange">VER RESULTADO</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- enquetes resultado -->
+          <div data-page="enquetesresultado" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">RESULTADO ENQUETE</div>
+                  <div class="right"><a href="#enquetescont" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="enquetesresultado-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- inserir enquetes -->
+          <div data-page="inserirenquetes" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR ENQUETE</div>
+                  <div class="right"><a href="#enquetes" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>   
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserirenquetes" enctype="multipart/form-data">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Data Início</div>
+                            <div class="item-input">
+                              <input type="date"  placeholder="dd/mm/aaaa" id="txtdatainicioenquetes" onchange="this.className=(this.value!=''?'has-value':'')">
+                              <!--onfocus="(this.type='datetime-local')" onblur="(this.type='datetime-local')"-->
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Data Término (Deixe em branco para encerrar manualmente)</div>
+                            <div class="item-input">
+                              <input type="date" placeholder="dd/mm/aaaa" id="txtdatafimenquetes" onchange="this.className=(this.value!=''?'has-value':'')">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Pergunta da Enquete</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitenquetes" onKeyUp="tabenter(event,getElementById('txtresp1'))" placeholder="Informe um título" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+                      <!-- Additional "align-top" class for correct textarea alignment -->
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Resposta 01</div>
+                              <div class="item-input">
+                                  <input type="text" id="txtresp1" onKeyUp="tabenter(event,getElementById('txtresp2'))" placeholder="Informe uma resposta" required>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Resposta 02</div>
+                              <div class="item-input">
+                                  <input type="text" id="txtresp2" onKeyUp="tabenter(event,getElementById('txtresp3'))" placeholder="Informe uma resposta" required>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Resposta 03</div>
+                              <div class="item-input">
+                                  <input type="text" id="txtresp3" onKeyUp="tabenter(event,getElementById('txtresp4'))" placeholder="Informe uma resposta" required>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Resposta 04</div>
+                              <div class="item-input">
+                                  <input type="text" id="txtresp4" onKeyUp="tabenter(event,getElementById('txtresp5'))" placeholder="Informe uma resposta" required>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Resposta 05</div>
+                              <div class="item-input">
+                                  <input type="text" id="txtresp5" onKeyUp="tabenter(event,getElementById('butinserirenquete'))" placeholder="Informe uma resposta" required>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserirenquetes" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>            
+                </div>                
+              </div>
+            </div>
+          </div>
+
+
+          <!-- servicos terceirizados -->
+          <div data-page="servico" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">SERVIÇOS TERCEIRIZADOS</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <!-- Floatin Action Button -->
+            <a href="#inserirservico" id="inserirservico" class="inserirservico floating-button bg-green">
+              <i class="icon icon-plus"></i>
+            </a>          
+            <div class="page-content servico pull-to-refresh-content">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
+                <div class="list-block media-list tablet">
+                  <ul id="servico-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- servicos terceirizados conteudo -->
+          <div data-page="servicocont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">SERVIÇOS TERCEIRIZADOS</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="" class="floating-button tel-anuncio bg-green" onclick=''>
+            <i class="fa fa-phone fa-2x"></i>
+          </a> 
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="servicocont-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- inserir servicos terceirizados -->
+          <div data-page="inserirservico" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR SERVIÇOS</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserirservico">
+                    <ul>
+                   
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitservico" onKeyUp="tabenter(event,getElementById('txtdescricaoservico'))" placeholder="Informe um título">
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+                      <!-- Additional "align-top" class for correct textarea alignment -->
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtdescricaoservico" class="resizable" placeholder="Informe uma descrição"></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Fone</div>
+                            <div class="item-input">
+                            <input type="tel" class="phone" id="txtphoneservico" onKeyUp="tabenter(event,getElementById('preview-servico'))" placeholder="Informe um telefone">
+                            </div>
+                          </div>
+                        </div>
+                      </li>   
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-servico" class="optionCameraServico custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-servico" onKeyUp="tabenter(event,getElementById('butinserirservico'))" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserirservico" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>                  
+                  </form>
+                </div>                
+              </div>
+            </div>
+          </div>
+
+
+          <!-- interfone -->
+          <div data-page="interfone" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INTERFONE</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <form data-search-list=".search-here" data-search-in=".item-title" class="searchbar searchbar-init toolbar tabbar submenuinterfone">
+              <div class="searchbar-input">
+                <input type="search" class="inputsearchinterfone" placeholder="Nome ou apto">
+                <a href="#" class="searchbar-clear"></a>
+              </div>
+            </form>
+        
+            <div class="page-content interfone infinite-scroll-content" style="padding-top: 112px;">
+              <div class="list-block searchbar-not-found">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title">Nenhum resultado</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+                <div class="list-block media-list tablet list-block-search-interfone searchbar-found">
+                  <ul id="interfone-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+
+          <!-- interfone conteudo -->
+          <div data-page="interfonecont" class="page cached interfonecont">
+
+            <div class="page-content">
+              <div class="list-block media-list tablet">
+                <div id="interfonecont-cont"></div>
+              </div>
+              <div id="interfonecontvideo"></div>
+            </div>
+            <div class="interfonecontbg"></div>
+          </div>
+
+        <!-- comunicado -->
+          <div data-page="comuncondominio" id="comuncondominio" class="page cached with-subnavbar">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">COMUNICADOS</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="toolbar tabbar">
+              <div class="toolbar-inner">
+                <a href="#" onclick="comuncondominio();" class="tab-link tab-1"><i class="icon fa badgecomuncondominio"></i>Condomínio</a>
+                <a href="#" onclick="comunportaria();" class="tab-link tab-2"><i class="icon fa badgecomunportaria"></i>Portaria</a>
+                <a href="#" onclick="comunmorador();" class="tab-link tab-3 labelmoradortab"><i class="icon fa badgecomunmorador"></i>Morador</a>
+              </div>
+            </div>
+
+              <!-- Floatin Action Button -->
+              <a href="#inserircomuncondominio" id="inserircomuncondominio" class="inserircomuncondominio floating-button bg-green">
+                <i class="icon icon-plus"></i>
+              </a>
+              <div class="page-content comuncondominio">
+                <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+                </div>
+                  <div class="list-block media-list tablet">
+                    <ul id="comuncondominio-cont"></ul>
+                  </div>
+                  <!-- Preloader -->
+                  <div class="infinite-scroll-preloader">
+                    <div class="preloader"></div>
+                  </div>
+              </div>
+
+              <!-- Floatin Action Button -->
+              <a href="#inserircomunportaria" id="inserircomunportaria" class="inserircomunportaria floating-button bg-green">
+                <i class="icon icon-plus"></i>
+              </a>
+              <!-- pull-to-refresh-content -->
+              <div class="page-content comunportaria">
+                <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+                </div>
+                  <div class="list-block media-list tablet">
+                    <ul id="comunportaria-cont"></ul>
+                  </div>
+                  <!-- Preloader -->
+                  <div class="infinite-scroll-preloader">
+                    <div class="preloader"></div>
+                  </div>
+              </div>
+
+              <!-- Floatin Action Button -->
+              <a href="#inserircomunmorador" id="inserircomunmorador" class="inserircomunmorador floating-button bg-green">
+                <i class="icon icon-plus"></i>
+              </a>
+              <div class="page-content comunmorador">
+                <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+                </div>
+                  <div class="list-block media-list tablet">
+                    <ul id="comunmorador-cont"></ul>
+                  </div>
+                  <!-- Preloader -->
+                  <div class="infinite-scroll-preloader">
+                    <div class="preloader"></div>
+                  </div>
+              </div>
+
+            </div>
+
+          <!-- comunicado conteudo -->
+          <div data-page="comunicadocont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">COMUNICADO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="comunicadocont-cont"></ul>
+                </div>
+                <div class="list-block media-list tablet">
+                  <ul id="comunicadorespcont-cont"></ul>
+                </div>
+                <div class="resp-cont tablet"></div>
+            </div>
+          </div>
+
+
+
+          <!-- inserir comunicado condomínio -->
+          <div data-page="inserircomuncondominio" class="page cached">  
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR COMUNICADO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserircomuncondominio">
+                    <ul>
+                      <!-- Select -->
+                      <li class="blocolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelbloco">Bloco</div>
+                            <div class="item-input">
+                              <select id="blocolist" onchange="listDomicilio(null,'condominio');" class="blocolistcomunicado" required>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="domiciliolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelapto">Apto</div>
+                            <div class="item-input">
+                              <select id="domiciliolist" onChange="listMoradores(null,'condominio');" class="domiciliolistcomunicado">
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="moradorlistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label labelmorador">Morador</div>
+                              <div class="item-input">
+                                <select id="moradorlist" class="moradorlistcomunicado">
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitcomuncondominio" onKeyUp="tabenter(event,getElementById('txtdescricaocomuncondominio'))" placeholder="Informe um título" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+                      <!-- Additional "align-top" class for correct textarea alignment -->
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtdescricaocomuncondominio" class="resizable" placeholder="Informe uma descrição" required></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-comunicado1" class="optionCameraComuncondominio custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-comuncondominio"  width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="arqPdf">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Arquivo PDF</div>
+                            <div class="item-input">
+                              <input type="file" id="pdfFileComuncondominio" value="" class="custom-pdf-input">
+                              <input type="hidden" id="pdfFileComuncondominioHidden" value="">
+                              <div class="pdf-preview">
+                                <img src="" id="preview-pdf-comuncondominio" width="100" height="80">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserircomuncondominio" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>
+                </div>               
+              </div>
+            </div>
+          </div>
+
+           <!-- inserir comunicado portaria -->
+          <div data-page="inserircomunportaria" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR COMUNICADO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserircomunportaria">
+                    <ul>
+                      <li class="blocolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelbloco">Bloco</div>
+                            <div class="item-input">
+                              <select id="blocolistportaria" onchange="listDomicilio(null,'portaria');" class="blocolistcomunicado" required></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <input type="hidden" id="blocolistportaria" class="sembloco invisivel">
+
+                      <li class="domiciliolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelapto">Apto</div>
+                            <div class="item-input">
+                              <select id="domiciliolistportaria" onChange="listMoradores(null,'portaria');" class="domiciliolistcomunicado"></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="moradorlistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label labelmorador">Morador</div>
+                              <div class="item-input">
+                                <select id="moradorlistportaria" class="moradorlistcomunicado"></select>
+                              </div>
+                            </div>
+                          </div>
+                      </li>
+
+                      <li class="listportaria invisivel">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Portaria</div>
+                              <div class="item-input">
+                                <select id="portarialistportaria" class="portarialistportaria"></select>
+                              </div>
+                            </div>
+                          </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                              <input type="text" id="txttitcomunportaria" name="txttitcomunportaria" onKeyUp="tabenter(event,getElementById('txtdescricaocomunportaria'))" placeholder="Informe um título" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtdescricaocomunportaria" name="txtdescricaocomunportaria" class="resizable" placeholder="Informe uma descrição"></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-comunicado1" class="optionCameraComunportaria custom-file-input"></div>
+                              <div class="img-preview">
+                                <img src="" id="preview-comunportaria"  width="100" height="80">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="arqPdf">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Arquivo PDF</div>
+                            <div class="item-input">
+                              <input type="file" id="pdfFileComunportaria" value="" class="custom-pdf-input">
+                              <input type="hidden" id="pdfFileComunportariaHidden" value="">
+                              <div class="pdf-preview">
+                                <img src="" id="preview-pdf-comunportaria" width="100" height="80">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserircomunportaria" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>
+                </div>             
+              </div>
+            </div>
+          </div>
+
+          <!-- inserir comunicado morador -->
+          <div data-page="inserircomunmorador" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR COMUNICADO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserircomunmorador">                    
+                    <ul>
+                     <!-- Select -->
+                      <li class="blocolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelbloco">Bloco</div>
+                            <div class="item-input">
+                              <select id="blocolistmorador" onchange="listDomicilio(null,'morador');" class="blocolistcomunicado" required>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <input type="hidden" id="blocolistmorador" class="sembloco invisivel">
+
+                      <li class="domiciliolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelapto">Apto</div>
+                            <div class="item-input">
+                              <select id="domiciliolistmorador" onChange="listMoradores(null,'morador');" class="domiciliolistcomunicado">
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="moradorlistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label labelmorador">Morador</div>
+                              <div class="item-input">
+                                <select id="moradorlistmorador" class="moradorlistcomunicado">
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Título</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitcomunmorador" onKeyUp="tabenter(event,getElementById('txtdescricaocomunmorador'))" placeholder="Informe um título" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+                      <!-- Additional "align-top" class for correct textarea alignment -->
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Descrição</div>
+                              <div class="item-input">
+                                  <textarea id="txtdescricaocomunmorador" class="resizable" placeholder="Informe uma descrição" required></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-comunmorador" class="optionCameraComunmorador custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-comunmorador"  width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="arqPdf">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Arquivo PDF</div>
+                            <div class="item-input">
+                              <input type="file" id="pdfFileComunmorador" value="" class="custom-pdf-input">
+                              <input type="hidden" id="pdfFileComunmoradorHidden" value="">
+                              <div class="pdf-preview">
+                                <img src="" id="preview-pdf-comunmorador" width="100" height="80">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserircomunmorador" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+             
+              </div>
+            </div>
+          </div>
+
+
+
+         <!-- cadastro morador -->
+          <div data-page="morador" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center labelmoradorupper">MORADORES</div>
+                  <div class="right"><a href="#cadastros" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="#inseriraddmorador" id="inseriraddmorador" class="inseriraddmorador floating-button bg-green">
+            <i class="icon icon-plus"></i>
+          </a>          
+            <div class="page-content morador pull-to-refresh-content">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
+                <div class="list-block media-list tablet">
+                  <ul id="morador-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- morador conteudo -->
+          <div data-page="moradorcont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center labelmoradorupper">MORADOR</div>
+                  <div class="right"><a href="#" class="back icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="moradorcont-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- inserir morador -->
+          <div data-page="inseriraddmorador" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center labelmoradorinserirupper">INSERIR MORADORES</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminseriraddmorador">
+                    <ul>
+                   
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Nome</div>
+                            <div class="item-input">
+                            <input type="text" id="txtnomeaddmorador" onKeyUp="tabenter(event,getElementById('txtemailaddmorador'))" placeholder="Informe um nome">
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Email</div>
+                            <div class="item-input">
+                            <input type="email" id="txtemailaddmorador" placeholder="Informe o email">
+                            </div>
+                          </div>
+                        </div>
+                      </li>       
+                    </ul>                  
+                  </form>
+                  <p class="buttons-row">
+                    <a href="#" id="butinseriraddmorador" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                  </p>
+                </div>              
+              </div>
+            </div>
+          </div>
+
+
+         <!-- cadastro visitante -->
+          <div data-page="visitante" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">VISITANTES</div>
+                  <div class="right"><a href="#cadastros" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="#inserirvisitante" id="inserirvisitante" class="floating-button bg-green">
+            <i class="icon icon-plus"></i>
+          </a>          
+            <div class="page-content visitante pull-to-refresh-content">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
+              <div class="list-block nomargin tablet">
+                  <div class="row item-content">
+                      <!-- Each "cell" has col-[widht in percents] class -->
+                      <div class="col-50">
+                          <div class="legendaespaco bg-indigo"></div><div class="legendaespacotext">Permanente</div>
+                      </div>
+                      <div class="col-50">
+                          <div class="legendaespaco bg-red"></div><div class="legendaespacotext">Temporário</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="list-block media-list tablet">
+                <ul id="visitante-cont"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- visitante conteudo -->
+          <div data-page="visitantecont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">VISITANTE</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="visitantecont-cont"></ul>
+                  <div class="list-block forminserirvisitanteacesso">
+                      <p class="buttons-row">
+                        <a href="#" id="butinserirvisitanteacessoentrada" class="button button-big button-fill button-raised color-green button-full-margin" style="margin-bottom:0!important">ENTRADA</a>
+                        <a href="#" id="textinserirvisitanteacessoentrada" class="button button-big button-fill button-raised color-green button-full-margin" style="margin-bottom:0!important">ENTRADA</a>
+                      </p>
+                      <p class="buttons-row">
+                        <a href="#" id="butinserirvisitanteacessosaida" class="button button-big button-fill button-raised color-red button-full-margin" style="margin-bottom:0!important">SAÍDA</a>
+                        <input type="hidden" id="guidvisitanteacesso" value="">
+                        <input type="hidden" id="idvisitante" value="">
+                        <input type="hidden" id="guidvisitante" value="">
+                      </p>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+
+          <!-- inserir visitante -->
+          <div data-page="inserirvisitante" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR VISITANTES</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block inserirvisitante">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserirvisitante">
+                    <ul>
+
+                      <li class="visitantecondominioli">
+                        <label class="label-checkbox label-checkbox-visitantecondominio item-content">
+                          <input type="checkbox" name="txtvisitantecondominio" id="txtvisitantecondominio" value="1">
+                          <div class="item-media item-media-visitante">
+                            <i class="icon icon-form-checkbox item-checkbox"></i>
+                          </div>
+                          <div class="item-inner item-checkbox-text">
+                            <div class="item-title item-title-visitante">Visitante para o condomínio</div>
+                          </div>
+                        </label>
+                      </li>
+
+                      <li class="blocolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelbloco">Bloco</div>
+                            <div class="item-input">
+                              <select id="blocolistportariavisitantes" onchange="listDomicilio(null,'visitantes');" class="blocolistcomunicado" required></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="domiciliolistcomunicadoli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label labelapto">Apto</div>
+                            <div class="item-input">
+                              <select id="domiciliolistportariavisitantes" class="domiciliolistcomunicado"></select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Nome</div>
+                            <div class="item-input">
+                            <input type="text" id="txtnomevisitante" onKeyUp="tabenter(event,getElementById('txtrgvisitante'))" placeholder="Informe um nome" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                            <input type="hidden" id="txtguidvisitante" value="">
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">RG</div>
+                            <div class="item-input">
+                            <input type="text" class="" id="txtrgvisitante" onKeyUp="tabenter(event,getElementById('txtcpfvisitante'))" placeholder="Informe um RG">
+                            </div>
+                          </div>
+                        </div>
+                      </li> 
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">CPF</div>
+                            <div class="item-input">
+                            <input type="text" class="cpf" id="txtcpfvisitante" onKeyUp="tabenter(event,getElementById('txtphonevisitante'))" placeholder="Informe um CPF">
+                            </div>
+                          </div>
+                        </div>
+                      </li>  
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Fone</div>
+                            <div class="item-input">
+                            <input type="tel" class="phone" id="txtphonevisitante" onKeyUp="tabenter(event,getElementById('txtemailvisitante'))" placeholder="Informe um telefone">
+                            </div>
+                          </div>
+                        </div>
+                      </li>  
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Email</div>
+                            <div class="item-input">
+                            <input type="email" id="txtemailvisitante" onKeyUp="tabenter(event,getElementById('txttipovisitante'))" placeholder="Informe o email">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="inserirvisitantepermanente">
+                        <label class="label-radio label-radio-visitante-per item-content">
+                          <input type="radio" name="txttipovisitante" id="txttipovisitante" value="1" checked="checked">
+                          <div class="item-media item-media-visitante">
+                            <i class="icon icon-form-radio"></i>
+                          </div>
+                          <div class="item-inner">
+                            <div class="item-title item-title-visitante">Permanente</div>
+                          </div>
+                        </label>
+                      </li>
+
+                      <li class="inserirvisitantetemporario">
+                        <label class="label-radio label-radio-visitante-temp item-content">
+                          <input type="radio" name="txttipovisitante" id="txttipovisitante" value="2">
+                          <div class="item-media item-media-visitante">
+                            <i class="icon icon-form-radio"></i>
+                          </div>
+                          <div class="item-inner">
+                            <div class="item-title item-title-visitante">Temporário</div>
+                          </div>
+                        </label>
+                      </li>
+
+                      <li class="inserirvisitantehora">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Início</div>
+                            <div class="item-input">
+                              <input type="datetime-local" placeholder="dd/mm/aaaa 00:00" id="txthorainiciotempvisitante" onchange="this.className=(this.value!=''?'has-value':'')">
+                              <!--onfocus="(this.type='datetime-local')" onblur="(this.type='datetime-local')"-->
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="inserirvisitantehora">
+                        <div class="item-content">
+                          <div class="item-inner">
+                          <div class="item-title label">Término</div>
+                            <div class="item-input">
+                              <input type="datetime-local" placeholder="dd/mm/aaaa 00:00" id="txthoraterminotempvisitante" onchange="this.className=(this.value!=''?'has-value':'')">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Foto</div>
+                            <div class="item-input">
+                              <div id="imagem-visitante" class="optionCameraVisitante custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-visitante" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                    </ul>                  
+                  </form>
+                  <p class="buttons-row">
+                    <a href="#" id="butinserirvisitante" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                  </p>
+                </div>              
+              </div>
+            </div>
+          </div>
+
+
+          <!-- acesso visitante -->
+          <div data-page="acessovisitante" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">ACESSO VISITANTES</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="acessovisitantecont-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+        <!-- cadastro veiculo -->
+          <div data-page="veiculo" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">VEÍCULOS</div>
+                  <div class="right"><a href="#cadastros" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+          <!-- Floatin Action Button -->
+          <a href="#inserirveiculo" id="inserirveiculo" class="floating-button bg-green">
+            <i class="icon icon-plus"></i>
+          </a>          
+            <div class="page-content veiculo pull-to-refresh-content">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
+                <div class="list-block media-list tablet">
+                  <ul id="veiculo-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- veiculo conteudo -->
+          <div data-page="veiculocont" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">VEÍCULO</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="veiculocont-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- inserir veiculo -->
+          <div data-page="inserirveiculo" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR VEÍCULOS</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserirveiculo">
+                    <ul>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Foto</div>
+                            <div class="item-input">
+                              <div id="imagem-veiculo" class="optionCameraVeiculo custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-veiculo" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <!-- Select -->
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Tipo</div>
+                            <div class="item-input">
+                              <select id="txttipoveiculo" onchange="listMarcas();">
+                                <option value=""  selected="selected">Selecione um tipo</option>
+                                <option value="1">Carro</option>
+                                <option value="2">Moto</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="marcalistli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Marca</div>
+                            <div class="item-input">
+                            <select id="txtmarcaveiculo" onchange="listModelos();" class="" required>
+                            </select>
+                            <!--<input type="text" id="txtmarcaveiculo" onKeyUp="tabenter(event,getElementById('txtmodeloveiculo'))" placeholder="Informe uma marca">-->
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+
+                      <li class="modelolistli">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Modelo</div>
+                            <div class="item-input">
+                            <!--<input type="text" id="txtmodeloveiculo" onKeyUp="tabenter(event,getElementById('txtcorveiculo'))" placeholder="Informe um modelo">-->
+                            <select id="txtmodeloveiculo" class="" required>
+                            </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>  
+
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Cor</div>
+                            <div class="item-input">
+                            <input type="text" id="txtcorveiculo" class="selcor" onKeyUp="tabenter(event,getElementById('txtplacaveiculo'))" placeholder="Informe uma cor">
+                            </div>
+                          </div>
+                        </div>
+                      </li>  
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Placa</div>
+                            <div class="item-input">
+                            <input type="text" class="placa" id="txtplacaveiculo" onKeyUp="tabenter(event,getElementById('butinserirveiculo'));mascara(this, mplaca)" placeholder="Informe uma placa" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                    </ul>                  
+                  </form>
+                  <p class="buttons-row">
+                    <a href="#" id="butinserirveiculo" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                  </p>
+                </div>               
+              </div>
+            </div>
+          </div>
+
+
+         <!-- cronograma -->
+          <div data-page="cronograma" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">EQUIPE DO CONDOMÍNIO</div>
+                  <div class="right"><a href="#index" class="link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <form data-search-list=".search-here" data-search-in=".item-title" class="searchbar searchbar-init toolbar tabbar submenucronograma">
+              <div class="searchbar-input">
+                <input type="search" class="inputsearchcronograma" placeholder="Nome ou função">
+                <a href="#" class="searchbar-clear"></a>
+              </div>
+            </form>
+          <!-- Floatin Action Button -->
+          <a href="#inserircronograma" id="inserircronograma" class="inserircronograma floating-button bg-green">
+            <i class="icon icon-plus"></i>
+          </a>          
+            <div class="page-content cronograma pull-to-refresh-content" style="padding-top: 112px;">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
+              <div class="list-block searchbar-not-found">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title">Nenhum resultado</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+                <div class="list-block media-list tablet list-block-search-cronograma searchbar-found">
+                  <ul id="cronograma-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- cronograma conteudo -->
+          <div data-page="cronogramacont" class="page cached">
+
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                <div class="center">EQUIPE DO CONDOMÍNIO</div>
+                <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+            </div>
+          </div>
+
+          <!-- Floatin Action Button -->
+          <a href="" class="floating-button tel-cronograma bg-green" onclick=''>
+            <i class="fa fa-phone fa-2x"></i>
+          </a> 
+            <div class="page-content">
+                <div class="list-block media-list tablet">
+                  <ul id="cronogramacont-cont"></ul>
+                </div>
+            </div>
+          </div>
+
+          <!-- inserir cronograma -->
+          <div data-page="inserircronograma" class="page cached">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                  <div class="center">INSERIR EQUIPE</div>
+                  <div class="right"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="right no-margin"><a href="#index" class="link icon-only"><i class="icon fa fa-home"></i></a></div>
+              </div>
+            </div>
+
+            <div class="page-content">
+              <div class="content-block">
+                <div class="list-block tablet">
+                  <form method="post" action="#" role="form" id="forminserircronograma">
+                    <ul>
+                   
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Nome</div>
+                            <div class="item-input">
+                            <input type="text" id="txttitcronograma" onKeyUp="tabenter(event,getElementById('txtdescricaocronograma'))" placeholder="Informe um nome">
+                            </div>
+                          </div>
+                        </div>
+                      </li>                 
+                      <!-- Additional "align-top" class for correct textarea alignment -->
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Função</div>
+                              <div class="item-input">
+                                  <textarea id="txtdescricaocronograma" class="resizable" placeholder="Informe uma função"></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Fone</div>
+                            <div class="item-input">
+                            <input type="tel" class="phone" id="txtphonecronograma" placeholder="Informe um telefone">
+                            </div>
+                          </div>
+                        </div>
+                      </li>   
+
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title label">Imagem</div>
+                            <div class="item-input">
+                              <div id="imagem-cronograma" class="optionCameraCronograma custom-file-input"></div>
+                                <div class="img-preview">
+                                  <img src="" id="preview-cronograma" width="100" height="80">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <p class="buttons-row">
+                              <a href="#" id="butinserircronograma" class="button button-big button-fill button-raised color-indigo button-full-margin">ENVIAR</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>                  
+                  </form>
+                </div>                
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- banner conteudo -->
+    <div class="page cached popup popup-bannercont tablet-fullscreen">     
+      <!-- Floatin Action Button -->
+      <a href="#" class="close-popup floating-top white bg-orange">
+        <i class="fa fa-times"></i>
+      </a>
+      <a href="#" class="floating-top2 del-banner white bg-red">
+        <i class="fa fa-trash"></i>
+      </a>
+      <div class="banner-full"></div>
+    </div>
+
+    <!-- help -->
+    <div class="popup popup-help tablet-fullscreen"> 
+        <!-- Floatin Action Button -->
+        <a href="#index" class="close-popup floating-top white bg-red">
+          <i class="fa fa-times"></i>
+        </a>
+        <!-- swiper-init to initialize swiper automatically -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src=""></div>
+                <div class="swiper-slide"><img src=""></div>
+                <div class="swiper-slide"><img src=""></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+        </div>  
+    </div>
+
+    <div class="login-screen"><!--modal-in-->
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content page-login">
+            <div class="login-screen-title login-logo"><img src="images/login-logo.png"></div>
+            <form id="formlogin">
+              <div class="list-block inputs-list loginform">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner"> 
+                      <div class="item-title label">E-mail</div>
+                      <div class="item-input">
+                        <input type="email" name="email" id="email" autocomplete="on" autocorrect="on" autocapitalize="off" spellcheck="true" onKeyUp="tabenter(event,getElementById('password'))" placeholder="Digite seu e-mail">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner"> 
+                      <div class="item-title label">Senha</div>
+                      <div class="item-input">
+                        <input type="password" name="password" onKeyUp="tabenter(event,getElementById('entrar'))" id="password" placeholder="Digite sua senha">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block no-margin-auto padding-bottom10"><a href="#" id="entrar" class="button button-big button-fill button-raised color-orange">ENTRAR</a></div>
+              <div class="list-block no-margin-auto padding-bottom10"><a href="#" onClick="myApp.popup('.popup-cadastro');" class="button button-big button-fill button-raised color-green">CADASTRO</a></div>
+              <div class="list-block no-margin-auto">
+                <div class="list-block-label no-margin-auto"><a href="#" onClick="myApp.popup('.popup-esqueceu');" class="white">Esqueceu a senha?</a></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- cadastro teste -->
+    <div class="popup popup-cadastro tablet-fullscreen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content page-login">
+            <div class="login-screen-title login-logo"><img src="images/login-logo.png"></div>
+            <form id="formaddmoradorteste">
+              <div class="list-block inputs-list loginform">
+                <ul>
+                <li>
+                  <div class="content text-cadastro">
+                    <p>Solicite ao síndico o código do seu condomínio (Deixe esse campo em branco para se cadastrar no condomínio MODELO). Após o cadastro, você receberá um email de confirmação para criar sua senha.</p>
+                  </div>
+                </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Código do condomínio</div>
+                      <div class="item-input">
+                        <input type="text" name="txtcodcondominio" id="txtcodcondominio" autocomplete="on" autocorrect="on" autocapitalize="off" spellcheck="true" onKeyUp="tabenter(event,getElementById('txtnomeaddmoradorteste'))" placeholder="Digite o código do seu condomínio">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Nome</div>
+                      <div class="item-input">
+                        <input type="text" name="txtnomeaddmoradorteste" id="txtnomeaddmoradorteste" autocomplete="on" autocorrect="on" autocapitalize="off" spellcheck="true" onKeyUp="tabenter(event,getElementById('txtemailaddmoradorteste'))" placeholder="Digite seu nome">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">E-mail</div>
+                      <div class="item-input">
+                        <input type="email" name="txtemailaddmoradorteste" id="txtemailaddmoradorteste" autocomplete="on" autocorrect="on" autocapitalize="off" spellcheck="true" onKeyUp="tabenter(event,getElementById('cellphoneaddmoradorteste'))" placeholder="Digite seu e-mail">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Fone</div>
+                      <div class="item-input">
+                        <input type="tel" class="phone" name="cellphoneaddmoradorteste" id="cellphoneaddmoradorteste" autocomplete="on" autocorrect="on" autocapitalize="off" spellcheck="true" onKeyUp="tabenter(event,getElementById('cadastro-teste'))" placeholder="Digite seu telefone">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block no-margin-auto padding-bottom10"><a href="#" id="cadastro-teste" class="button button-big button-fill button-raised color-green">CADASTRAR</a></div>
+              <div class="list-block no-margin-auto">
+                <div class="list-block-label no-margin-auto"><a href="#" class="white close-popup">Fechar</a></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- esqueceu a senha -->
+    <div class="popup popup-esqueceu tablet-fullscreen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content page-login">
+            <div class="login-screen-title login-logo"><img src="images/login-logo.png"></div>
+            <form id="formlogin">
+              <div class="list-block inputs-list loginform">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner"> 
+                      <div class="item-title label">E-mail</div>
+                      <div class="item-input">
+                        <input type="email" name="esqueceu-email" id="esqueceu-email" autocomplete="on" autocorrect="on" autocapitalize="off" spellcheck="true" onKeyUp="tabenter(event,getElementById('password'))" placeholder="Digite seu e-mail">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block"><a href="#" id="esqueceu" class="button button-big button-fill button-raised color-orange">RECUPERAR SENHA</a></div>
+              <div class="list-block no-margin-auto">
+                <div class="list-block-label no-margin-auto"><a href="#" class="white close-popup">Fechar</a></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<script src="https://rawgit.com/muaz-khan/RTCMultiConnection/master/dist/RTCMultiConnection.min.js"></script>
+    <script src="https://www.webrtc-experiment.com/getMediaElement-v1.2.js"> </script>
+    <script src="js/SSEConnection.js"></script>-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <!-- API JS Pagseguro - In production remove sandbox -->
+    <!--<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuyZZJSUxIPv3lVWWQhcl8drGzxFUunCk"></script>
+  </body>
+
+</html>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "970425531087",
+    "firebase_url": "https://vogghome.firebaseio.com",
+    "project_id": "vogghome",
+    "storage_bucket": "vogghome.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970425531087:android:5949d82fdb791d891b55ba",
+        "android_client_info": {
+          "package_name": "com.vogghome.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970425531087-ihtoijfrakk7j9afvjhjm13obtau27as.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpPofXY5Y8L2QmV6fhTyA41QbjBKA16yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970425531087-ihtoijfrakk7j9afvjhjm13obtau27as.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "970425531087-4b3eo0e5pu3ukclufc8quki88o7fu1o6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vogghome.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
