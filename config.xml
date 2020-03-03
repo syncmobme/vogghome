@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" android-versionCode="100" ios-CFBundleVersion="1.0.0" version="1.0.0" id="com.vogghome.ios">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" android-versionCode="101" ios-CFBundleVersion="1.0.1" version="1.0.1" id="com.vogghome.ios">
 <!--
 id="com.vogghome.ios"
 id="com.vogghome.android"
@@ -149,21 +149,6 @@ id="com.vogghome.android"
 <splash platform="android" src="package-assets/splash-android-470-320.png" density="mdpi" width="470" height="320" orientation="landscape"/>
 <splash platform="android" src="package-assets/splash-android-426-320.png" density="ldpi" width="426" height="320" orientation="landscape"/>
 
-<!--<splash platform="ios" src="package-assets/splash-ios-2048-2732.png" width="2048" height="2732" orientation="portrait"/>
-<splash platform="ios" src="package-assets/splash-ios-1536-2048.png" width="1536" height="2048" orientation="portrait"/>
-<splash platform="ios" src="package-assets/splash-ios-768-1024.png" width="768" height="1024" orientation="portrait"/>
-<splash platform="ios" src="package-assets/splash-ios-1242-2208.png" width="1242" height="2208" orientation="portrait"/>
-<splash platform="ios" src="package-assets/splash-ios-750-1334.png" width="750" height="1334" orientation="portrait"/>
-<splash platform="ios" src="package-assets/splash-ios-640-1136.png" width="640" height="1136" orientation="portrait"/>
-<splash platform="ios" src="package-assets/splash-ios-640-960.png" width="640" height="960" orientation="portrait"/>
-<splash platform="ios" src="package-assets/splash-ios-320-480.png" width="320" height="480" orientation="portrait"/>
-
-<splash platform="ios" src="package-assets/splash-ios-2732-2048.png" width="2732" height="2048" orientation="landscape"/>
-<splash platform="ios" src="package-assets/splash-ios-2208-1242.png" width="2208" height="1242" orientation="landscape"/>
-<splash platform="ios" src="package-assets/splash-ios-1334-750.png" width="1334" height="750" orientation="landscape"/>
-<splash platform="ios" src="package-assets/splash-ios-2048-1536.png" width="2048" height="1536" orientation="landscape"/>
-<splash platform="ios" src="package-assets/splash-ios-1024-768.png" width="1024" height="768" orientation="landscape"/>-->
-
 <splash src = "package-assets/Default@2x~universal~anyany.png" />
 
 <icon platform="android" src="package-assets/icon-36.png" density="ldpi" width="36" height="36"/>
@@ -188,7 +173,7 @@ id="com.vogghome.android"
 <icon platform="ios" src="package-assets/icon-apple-120.png" width="120" height="120"/>
 <icon platform="ios" src="package-assets/icon-apple-144.png" width="144" height="144"/>
 <icon platform="ios" src="package-assets/icon-apple-152.png" width="152" height="152"/>
-<!--<icon platform="ios" src="package-assets/icon-apple-167.png" width="167" height="167"/>-->
+<icon platform="ios" src="package-assets/icon-apple-167.png" width="167" height="167"/>
 <icon platform="ios" src="package-assets/icon-apple-180.png" width="180" height="180"/>
 <icon platform="ios" src="package-assets/icon-apple-187.png" width="187" height="187"/>
 <icon platform="ios" src="package-assets/icon-apple-512.png" width="512" height="512"/>
