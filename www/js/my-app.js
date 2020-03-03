@@ -1043,7 +1043,7 @@ $$('#entrar').on('click', function(){
                             }
                         }else{
                             myApp.hideIndicator();
-                            myApp.alert('Condomínio bloqueado! Favor entrar em contato com o Aptohome.');
+                            myApp.alert('Condomínio bloqueado! Favor entrar em contato com o Suporte.');
                             block=1;
                         }
                     });
@@ -1173,7 +1173,7 @@ $$('#entrar').on('click', function(){
                             }
                         }else{
                             myApp.hideIndicator();
-                            myApp.alert('Condomínio bloqueado! Favor entrar em contato com o Aptohome.'); 
+                            myApp.alert('Condomínio bloqueado! Favor entrar em contato com o Suporte.');
                         }
                     });
                 } else if (data.login.sindico) {
@@ -1367,7 +1367,7 @@ $$('#entrar').on('click', function(){
                             }
                         }else{
                             myApp.hideIndicator();
-                            myApp.alert('Condomínio bloqueado! Favor entrar em contato com o Aptohome.');    
+                            myApp.alert('Condomínio bloqueado! Favor entrar em contato com o Suporte.');
                         }
                     });
                 } else {
@@ -3016,7 +3016,7 @@ if (indexofImage!="-1") {
                 }
                 
                 myApp.hideIndicator();
-                myApp.alert('Usuário editado om sucesso!', function () { mainView.router.load({pageName: 'index'});});
+                myApp.alert('Usuário editado com sucesso!', function () { mainView.router.load({pageName: 'index'});});
             });
         }
          ,error:function(data){
@@ -4541,6 +4541,7 @@ $$('#pdfFileOcorrencias').on('change', function (e) {
         }
     }else{
         myApp.alert('Formato inválido! Escolha um arquivo no formato PDF.');
+        myApp.hideIndicator();
     }
 
 });
@@ -10113,6 +10114,7 @@ $$('#pdfFileComunportaria').on('change', function (e) {
         }
     }else{
         myApp.alert('Formato inválido! Escolha um arquivo no formato PDF.');
+        myApp.hideIndicator();
     }
 
 });
@@ -10758,7 +10760,7 @@ $('#inserircomunmorador').on('click', function(){
 $('#butinserircomunmorador').on('click', function(){
     //alert("enviar");
 
-    if (($$('#blocolistmorador').val()!="") && ($$('#domiciliolistmorador').val()!="") && ($$('#moradorlistmorador').val()!="") && ($$('#txttitcomunmorador').val()!="") && ($$('#txtdescricaocomunmorador').val()!="")) {
+    if (($$('#blocolistmorador').val()!="" || $$('#blocolistmorador.sembloco').val()!="") && ($$('#domiciliolistmorador').val()!="") && ($$('#moradorlistmorador').val()!="") && ($$('#txttitcomunmorador').val()!="") && ($$('#txtdescricaocomunmorador').val()!="")) {
 
             enviarcomunmorador();
 
@@ -10798,6 +10800,7 @@ $$('#pdfFileComunmorador').on('change', function (e) {
         }
     }else{
         myApp.alert('Formato inválido! Escolha um arquivo no formato PDF.');
+        myApp.hideIndicator();
     }
 
 });
@@ -12448,7 +12451,7 @@ function bannercont(id){
             $('.del-banner').addClass('invisivel');
         }
         if (localStorage.getItem("administradoraIdadministradora") || localStorage.getItem("sindicoIdsindico")) {
-            $('.del-banner').removeClass('invisivel');
+            //$('.del-banner').removeClass('invisivel');
         }
 
         $.ajax({
@@ -12708,7 +12711,7 @@ function enviarbanner()
 
             },
             onMonthYearChangeStart: function (p) {
-                $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +' - ' + p.currentYear);
+                $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
                 
                 mesSelected = $('#calendar-inline-container .picker-calendar-day-selected').attr("data-month");
                 mesSelected = mesSelected+++1;
